@@ -41,9 +41,15 @@ Thumbs.db
 #########
 standorte.xml
 standorte.csv
+standorte.geojson
 serve.sh
 app.yaml
 config.rb
 template_orig.html
 overview.html
 style.css
+scripts/
+leaflet/
+awesome-marker/
+js/bouncemarker.js
+js/jquery-1.11.2.min.js
