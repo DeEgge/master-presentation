@@ -1,0 +1,455 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<!-- A -->
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/logo.png"></span>
+    </article>
+  </slide> 
+
+<!-- B -->
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/logo_300ppi_transparent.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+<!-- 1 -->
+  <slide>
+    <hgroup>
+      <h2>Inhalt</h2>
+    </hgroup>
+    <article>
+      <ul class="auto-fadein" style="font-size:1.2em; position:absolute; top:30%;">
+        <li style="padding-bottom:10px">Einführung und Motivation</li>
+        <li style="padding-bottom:10px">Konzept</li>
+        <li style="padding-bottom:10px">Datengrundlage</li>
+        <li style="padding-bottom:10px">Umsetzung und Implementierung</li>
+        <li style="padding-bottom:10px">Ergebnisse und Ausblick</li>
+        <li style="padding-bottom:10px">Demo</li>
+      </ul>
+    </article>
+  </slide>
+
+<!-- 2 -->
+  <slide>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Drei Standorte Golm, Neues Palais & Griebnitzsee</li>
+          <li>Dezentral</li>
+          <li>Insgesamt über 140 Einrichtungen</li>
+        </ul>
+      </section>
+    </aside>
+    <hgroup>
+      <h4>Einführung und Motivation</h4>
+      <h2>Überblick</h2>
+    </hgroup>
+    <article style="margin-top:10px;">
+      <iframe data-src="http://www.de-egge.de/maps/praesi/overview.html"></iframe>
+    </article>
+  </slide>
+
+<!-- 3 -->
+  <slide>
+    <hgroup>
+      <h4>Einführung und Motivation</h4>
+      <h2>Von A nach B?</h2>
+    </hgroup>
+    <article class="build smaller">
+      <div style="float:left">
+        <p>Zwischen den Standorten:</p>
+          <ul style="list-style: none;">
+            <li><img src="images/vbb.png" style="width:80px;"></li>
+            <li><img src="images/google_maps.jpg" style="width:80px;"></li>
+            <li><img src="images/qixxit_logo.jpg" style="height:30px;"></li>
+          </ul>
+      </div>
+      <div  style="float:left; transform:translateX(60%);">
+        <p>An den Standorten:</p>
+          <ul>
+            <li><img src="images/lageplan_neues_palais.PNG" style="width:250px;"></li>
+          </ul>
+      </div>
+      <div style="float: left; margin-left: 12%; margin-right: 12%; text-align: center;">
+        <p>Umständlich! - Unkomfortabel! - Unpraktisch!</p>
+        <p><b>Lösung: Multimodaler Routenplaner vereint alle Transportmodi</p>
+        <p>Ziel: Lückenlose Haus-zu-Haus-Navigation</b></p>
+      </div>
+    </article>
+    <footer class="source">Quellen: <a href="http://www.vbb.de/de/article/media-service/logos/2660.html">VBB</a>|
+                                      <a href="http://logos.wikia.com/wiki/Google_Maps">Google, Inc.</a>|
+                                      <a href="http://www.qixxit.de">Qixxit</a>|
+                                      <a href="http://www.uni-potsdam.de/db/zeik-portal/gm/lageplan-up.php?komplex=1">Universtität Potsdam</a>
+    </footer>
+  </slide>
+    
+<!-- 4 -->
+  <slide>
+    <hgroup>
+      <h4>Konzept</h4>
+      <h2>Funktionsumfang</h2>
+    </hgroup>
+    <article>
+      <div style="float:left">
+        <ul class="build" style="width:300px;">
+          <li><img src="images/strassen.png" style="position: absolute; width: 600px; margin-left: 116.7%; top: 5%;z-index:0;"></li>
+          <li>Start- und Ziel festlegen<img src="images/nadeln.png" style="  position: absolute; width: 600px; margin-left: 21%; top: 5%; z-index:3;"></li>
+          <li>Graph erzeugen<img src="images/punkte.png" style="position: absolute; width: 600px; margin-left: 51.8%; top: 5%; z-index:4;"></li>
+          <li>Konfiguration durch den Nutzer<img src="images/pfade_bunt.png" style="position: absolute; width: 600px; margin-left: 89.5%; top: 5%;z-index:5;"></li>
+          <li>Routing-Algorithmus<img src="images/pfad.png" style="position: absolute; width: 600px; margin-left: 33.4%; top:5%;z-index:7;"></li>
+          <li>Präsentation der Ergebnisse<img src="images/praesi.png" style="position: absolute; width: 600px; margin-left: 72.8%; top:5%;z-index:10;"></li>
+        </ul>
+      </div>
+    </article>
+  </slide>
+
+<!-- 5 -->
+  <slide>
+    <hgroup>
+      <h4>Datengrundlage</h4>
+      <h2>Datenquellen</h2>
+    </hgroup>
+    <article>
+      <ul>Straßennetz
+        <ul>
+          <li>OpenStreetMap (OSM)</li>
+          <li>MIV, Radfahrer, Fußgänger</li>
+        </ul>
+      </ul>
+      <ul>ÖPNV-Netz
+        <ul>
+          <li>General Transit Feed Specification (GTFS)</li>
+          <li>Berlin/Brandenburg frei vom VBB verfügbar</li>
+        </ul>
+      </ul>
+      <ul>Höheninformationen
+        <ul>
+          <li>DGM der Stadt Potsdam (LiDAR)</li>
+          <li>Anpassungen für Radfahrer</li>
+        </ul>
+      </ul>
+    </article>
+  </slide>
+
+<!-- 6 -->
+  <slide>
+    <hgroup>
+      <h4>Datengrundlage</h4>
+      <h2>General Transit Feed Specification (GTFS)</h2>
+    </hgroup>
+    <article>
+      <ul style="width:400px">
+        <li>von Google entwickeltes Format<img src="images/gtfs.png" style="position:absolute;margin-left:14%;"></li>
+        <li>Reihe kommaseparierter Textdateien</li>
+        <li>Haltestellenposition, </br>Abfahrt- & Ankunftzeiten, </br>Linienverbindungen usw.</li>
+        <li>statisch, Zeitraum März 2014 - Dezember 2014</li>
+        <li>zugeschnitten auf Raum Potsdam</li>
+        <li>regelmäßige Veröffentlichung (ca. vierteljährlich)</li>
+      </ul>
+      <footer class="source" style="margin-left:77%;">Quelle: <a href="http://www.mvjantzen.com/blog/?p=1156">Schade 2012</a></footer>
+    </article>
+  </slide>
+
+<!-- 7 -->
+  <slide>
+    <hgroup>
+      <h4>Umsetzung und Implementierung</h4>
+      <h2>OpenTripPlanner</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>FOSS für multimodale Routenplanung</li>
+        <li>modularer Aufbau</li>
+      </ul>
+      <img src="images/otp.png" style="width:100%; -webkit-filter: grayscale(100%); filter: grayscale(100%);">
+    </article>
+  </slide>
+
+<!-- 8 -->
+  <slide>
+    <hgroup>
+      <h4>Umsetzung und Implementierung</h4>
+      <h2>Datenaufbereitung - OSM</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>im Sinne von <i style="font-style:italic;">fitness for use</i></li>
+        <li>regelmäßige Aktualisierung (parallel zu GTFS)</li>
+        <li>kein Anspruch auf Vollständigkeit!</li>
+      </ul>
+      <div style="border:5px solid grey; padding:15px">
+        <img src="images/JOSM_vor.png" style="width:49%; border-right:20px;">
+        <img src="images/JOSM_nach.png" style="float:right; width:49%; border-left:20px;">
+      </div>
+    </article>
+  </slide>
+
+<!-- 9 -->
+  <slide>
+    <hgroup>
+      <h4>Umsetzung und Implementierung</h4>
+      <h2>Geocoder</h2>
+    </hgroup>
+    <article class="smaller">
+      <ul>
+        <li>Nominatim als Geocoder für OpenStreetMap</li>
+        <li>Attributive Vollständigkeit von OSM unzureichend ...</li>
+        <li>... aber auch nicht umsetzbar</li>
+        <li>Alternative: eigener Geocoder</li>
+        <li>XML-basierte Liste</li>
+      </ul>
+      <pre class="prettyprint" data-lang="xml">
+          &lt;property name="pois"&gt;
+            &lt;map&gt;
+              &lt;entry key="BABELSBERG, HAUS 1 - STUDENTENWOHNHEIM" value="52.4068 13.09953" /&gt;
+              &lt;entry key="BABELSBERG, HAUS 2 - STUDENTENWOHNHEIM" value="52.40647 13.09906" /&gt;
+              &lt;entry key="BABELSBERG, HAUS 3 - STUDENTENWOHNHEIM" value="52.40688 13.09823" /&gt;
+              &lt;entry key="BABELSBERG, HAUS 4 - STUDENTENWOHNHEIM" value="52.40574 13.098487" /&gt;
+              &lt;!-- cont... --&gt;
+            &lt;/map&gt;
+          &lt;/property&gt;
+      </pre>
+    </article>
+  </slide>
+
+<!-- 10 -->
+  <slide>
+    <hgroup>
+      <h4>Ergebnisse und Ausblick</h4>
+      <h2>Bewertung</h2>
+    </hgroup>
+    <article class="build smaller">
+      <p><b>Umsetzung eines multimodalen Routenplaners auf Grundlage freier Daten und FOSS ist möglich ...</b></p>
+      <div>
+        <p class="green3">... mit Erfolgen:</p>
+          <ul>
+            <li>lückenlose Haus-zu-Haus-Navigation umgesetzt</li>
+            <li>Einbindung eines maßgeschneiderten Geocoders</li>
+            <li>feine Konfigurationsmöglichkeiten für Radfahrer durch Nutzung eines DGM</li>
+          </ul>
+      </div>
+      <div>
+        <p class="red3">... und Einschränkungen:</p>
+          <ul>
+            <li>freie Software sehr komplex, hohe Einstiegshürde, dürftige Dokumentation, Weiterentwicklung von Community abhängig</li>
+            <li>Datenaufbereitung notwendig, weiterhin abhängig von Anbietern</li>
+            <li>freie Lizenzen bedeuten auch Weitergabe unter gleichen Bedingungen</li>
+          </ul>
+      </div>
+    </article>
+  </slide>
+
+<!-- 11 -->
+  <slide>
+    <hgroup>
+      <h4>Ergebnisse und Ausblick</h4>
+      <h2>Zukunft</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Einbindung von Echtzeit-Aktualisierungen (ÖPNV, Fahrradverleih u.a.)</li>
+        <li>Gestaltung einer speziell angepassten Nutzeroberfläche (multilingual)</li>
+        <li>Implementierung in eine App für mobile Endgeräte (bereits möglich)</li>
+        <li>Indoor-Navigation</li>
+        <li>Netzwerkanalysen</li>
+        <li>Mobile.UP</li>
+      </ul>
+    </article>
+  </slide>
+
+<!-- 12 -->
+  <slide>
+    <hgroup>
+      <h4>Ergebnisse und Ausblick</h4>
+      <h2>Webanwendung</h2>
+    </hgroup>
+    <article>
+      <iframe data-src="http://141.89.192.240/otp-rest-servlet" style="height:486px;"></iframe>
+    </article>
+  </slide>
+
+<!-- Final -->
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/logo_300ppi_transparent.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>
+        <b>Freie Software</b> ist keine Frage des Geldes, sondern der Freiheit. Um das Konzept zu verstehen, muss man <b>frei</b> im Sinne von <b>Meinungsfreiheit</b> erachten, nicht im Sinne von <b>Freibier</b>.
+        <!--'Free software' is a matter of liberty, not price. To understand the concept, you should think of 'free' as in 'free speech,' not as in 'free beer'.-->
+      </q>
+      <div class="author">
+        Richard M. Stallman<br>
+        Gründer des GNU-Projekts
+      </div>
+    </article>
+  </slide>
+
+<!-- Danke -->
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="images/logo_300ppi_transparent.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Vielen Dank!&gt;</h2>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+<!-- extra: GTFS -->
+  <slide>
+    <hgroup>
+      <h4>Zusatz</h4>
+      <h2>General Transit Feed Specification</h2>
+    </hgroup>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="routes.txt">
+        "<b>route_id</b>","agency_id","route_short_name","route_long_name","route_type"
+        <b>15279_3</b>,150,"X5","Bhf Golm - S Hauptbahnhof",3
+      </pre>
+      <pre class="prettyprint" data-lang="trips.txt">
+        "<b>route_id</b>","service_id","<b>trip_id</b>","trip_headsign","trip_short_name","direction_id","shape_id"
+        <b>15279_3</b>,783,<b>27262655</b>,"S Potsdam Hauptbahnhof","Potsdam, Golm Bhf/S Potsdam Hauptbahnhof","0",69
+      </pre>
+      <pre class="prettyprint" data-lang="stop_times.txt">
+        "<b>trip_id</b>","arrival_time","departure_time","<b>stop_id</b>","stop_sequence"
+        <b>27262655</b>,9:55:00,9:55:00,<b>270000081101</b>,0
+        27262655,9:56:00,9:56:00,270000021201,1
+        27262655,9:59:00,9:59:00,270000019701,2
+        27262655,10:02:00,10:02:00,270000049201,3
+        ...
+      </pre>
+      <pre class="prettyprint" data-lang="stops.txt">
+        "<b>stop_id</b>","stop_code","stop_name","stop_desc","stop_lat","stop_lon","location_type","parent_station"
+        <b>270000081101</b>,"GOLU 01","Potsdam, Golm Bhf",,"52.410552000000","12.972179000000",0,900000220010
+        270000019701,"BSW 01","Potsdam, Baumschulenweg",,"52.404703000000","12.990345000000",0,900000230196
+        ...
+      </pre>
+    </article>
+  </slide>
+
+<!-- extra: Geocoder -->
+  <slide>
+    <hgroup>
+      <h4>Zusatz</h4>
+      <h2>Geocoder</h2>
+    </hgroup>
+    <article class="smaller">
+      <pre class="prettyprint" data-lang="xml">
+        &lt;bean id="geocoderAlternatingService" class="org.opentripplanner.geocoder.AlternatingGeocoderModified"&gt;
+          &lt;!-- 1. Geocoder --&gt;
+          &lt;constructor-arg ref="geocoderManual" /&gt;
+          &lt;!-- 2. Geocoder --&gt;
+          &lt;constructor-arg ref="geocoderNominatim" /&gt;
+          &lt;constructor-arg value="true" /&gt;
+            &lt;/bean&gt;
+          
+        &lt;bean id="geocoderManual" class="org.opentripplanner.geocoder.manual.ManualGeocoder"&gt;
+          &lt;property name="pois"&gt;
+            &lt;map&gt;
+              &lt;entry key="BABELSBERG, HAUS 1 - STUDENTENWOHNHEIM" value="52.4068 13.09953" /&gt;
+              &lt;entry key="BABELSBERG, HAUS 2 - STUDENTENWOHNHEIM" value="52.40647 13.09906" /&gt;
+              &lt;entry key="BABELSBERG, HAUS 3 - STUDENTENWOHNHEIM" value="52.40688 13.09823" /&gt;
+              &lt;entry key="BABELSBERG, HAUS 4 - STUDENTENWOHNHEIM" value="52.40574 13.098487" /&gt;
+              &lt;!-- cont... --&gt;
+            &lt;/map&gt;
+          &lt;/property&gt;
+        &lt;/bean&gt;     
+      </pre>
+    </article>
+  </slide>
+
+<!-- extra: APP -->
+  <slide>
+    <hgroup>
+      <h4>Zusatz</h4>
+      <h2>APP für mobile Endgeräte</h2>
+    </hgroup>
+    <article>
+      <div style="position:absolute; margin-left:12%;">
+        <img src="images/app1.png" class="reflect" style="float:left; width:23%; margin-right:4%">
+        <img src="images/app2.png" class="reflect" style="float:left; width:23%; margin-right:4%">
+        <img src="images/app3.png" class="reflect" style="float:left; width:23%;">
+      </div>
+    </article>
+    <footer class="source">l.: Webanwendung im mobilen Browser | m. und r.: Server eingebunden in die OpenTripPlanner-App</footer>
+  </slide>
+
+  <!-- extra: Indoor-Navigation -->
+  <slide>
+    <hgroup>
+      <h4>Zusatz</h4>
+      <h2>Indoor-Navigation</h2>
+    </hgroup>
+    <article class="build">
+      <!-- TO DO: Mockup für Indoor-Navigation erstellen -->
+      <img src="images/indoor1.png" style="width:73%;position:absolute;">
+      <img src="images/indoor2.png" style="width:73%;position:absolute; z-index:1;">
+      <img src="images/indoor3.png" style="width:73%;position:absolute; z-index:2;">
+    </article>
+    <footer class="source" style="margin-left:76%">Quelle: <a href="http://www.uni-potsdam.de/projekt-barrierefreiheit/lageplan-golm/golm_haus24-eg">Bartsch 2014</a></footer>
+  </slide>
+
+  <!-- extra: Netzwerkanalyse -->
+  <slide>
+    <hgroup>
+      <h4>Zusatz</h4>
+      <h2>Netzwerkanalyse</h2>
+    </hgroup>
+    <article class="smaller">
+      <img src="images/analyst.png" class="reflect" style="width:100%;">
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
