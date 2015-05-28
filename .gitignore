@@ -53,3 +53,5 @@ leaflet/
 awesome-marker/
 js/bouncemarker.js
 js/jquery-1.11.2.min.js
+images/offline*
+template_offline.html
